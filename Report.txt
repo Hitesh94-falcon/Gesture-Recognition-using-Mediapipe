@@ -1,0 +1,27 @@
+This code consists of a main script app.py,a utilities.py script and the log.csv files for visulization puposes
+
+problem statement: 
+    to recognise the movement of a hand and map it to a certain command.
+
+Logic behind: 
+    1. The code uses mediapipe landmarks and pose detection by google to localize and identify the hand postion.
+    the coordinates of the features from the mediapipe for example wrist coordinates, are extracted.
+    2. A bounding box is drawn to localize the hand and provide a refrence to find the centre of the hand.
+    3. the movent of the centre is captured in an empty list and after a certain inteval the descision is made whether its,
+    ["volume up", "volume down, "turning right", "turning left"]
+    4. another condition which is ["toggling"] a mute button which is done through pose estimation using mediapipes gesture detection.
+    after each condition fullfilled the que is reset and ready for next classification.
+    5. some commands like volume_up, volume_down, and mute toggling is achieved in real time using the pycaw to control windows speaker control features
+
+problems faced:
+    1. chances of occulision due to delay b/w the camera and fast movement or latency isues
+    2. the toggling was first tried to solve by just landmarks but depth factor was coming into play, which inturn was becoming a regretion problem.
+
+future work:
+    1. can be more optimized using open community projects like hand-gesture-recognition-using-mediapipe by Kazuhito00 and furher more.
+
+
+
+
+
+              
