@@ -33,7 +33,6 @@ def control_volume():
 
 volume = control_volume()
 
-
 def volume_up(step=0.1):
     current = volume.GetMasterVolumeLevelScalar()
     volume.SetMasterVolumeLevelScalar(min(current + step, 1.0), None)
@@ -42,9 +41,12 @@ def volume_down(step=0.1):
     current = volume.GetMasterVolumeLevelScalar()
     volume.SetMasterVolumeLevelScalar(max(current-step,0.0),None)
 
-def toggle_mute():
-    muted = volume.GetMute()
-    volume.SetMute(not muted, None)
+def set_mute_state(desired_state,text_voice):
+    current = volume.GetMute()
+    if desired_state != current:
+        volume.SetMute(desired_state, None)
+        text_voice.say("Muted" if desired_state else "Unmuted")
+        text_voice.runAndWait()
 
 def get_pose(frame, recognizer):
     mp_image = mp.Image(image_format=mp.ImageFormat.SRGB, data=frame)

@@ -8,6 +8,7 @@ from utilities import *
 
 text_voice = pyttsx3.init()
 
+# define all the mediapipe requirements
 
 mp_hands = mp.solutions.hands
 hands = mp_hands.Hands(min_detection_confidence=0.7, min_tracking_confidence=0.7,max_num_hands = 1)
@@ -65,7 +66,7 @@ try:
                 cv2.circle(frame, (centre_x, centre_y), 8, (0, 255, 0), 1)
                 
         experiment_mute = False
-
+ 
         # Gesture direction
         direction = get_direction(pts)
         if direction and direction != last_spoken:
@@ -84,24 +85,19 @@ try:
 
         if experiment_mute:
             if 8400 < area < 8500:
-                toggle_mute()
+                set_mute_state(True)
                 text_voice.say("muted")
                 text_voice.runAndWait()
             elif 49000 < area < 50000:
                 text_voice.say("un muted")
                 text_voice.runAndWait()
-                toggle_mute()
+                set_mute_state(False)
 
-        pose = get_pose(frame, recognizer)
-        if pose == "Fist":
-            toggle_mute()
-            text_voice.say("Muted")
-            text_voice.runAndWait()
+        pose = get_pose(frame,recognizer)
+        if pose == "Closed_Fist":
+            set_mute_state(True,text_voice)
         elif pose == "Open_Palm":
-            toggle_mute()
-            text_voice.say("Unmuted")
-            text_voice.runAndWait()
-
+            set_mute_state(False,text_voice)
 
         # Display 
         frame_bgr = cv2.cvtColor(frame, cv2.COLOR_RGB2BGR)

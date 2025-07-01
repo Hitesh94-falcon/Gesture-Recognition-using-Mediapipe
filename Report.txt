@@ -4,9 +4,9 @@ problem statement:
     to recognise the movement of a hand and map it to a certain command.
 
 Logic behind: 
-    1. The code uses mediapipe landmarks and pose detection by google to localize and identify the hand postion.
+    1. The code uses mediapipe landmarks and pose detection by google to localize and identify the palm postion.
     the coordinates of the features from the mediapipe for example wrist coordinates, are extracted.
-    2. A bounding box is drawn to localize the hand and provide a refrence to find the centre of the hand.
+    2. A bounding box is drawn to localize the whole palm and provide a refrence to find the centre of the palm.
     3. the movent of the centre is captured in an empty list and after a certain inteval the descision is made whether its,
     ["volume up", "volume down, "turning right", "turning left"]
     4. another condition which is ["toggling"] a mute button which is done through pose estimation using mediapipes gesture detection.
@@ -19,7 +19,7 @@ problems faced:
 
 future work:
     1. can be more optimized using open community projects like hand-gesture-recognition-using-mediapipe by Kazuhito00 and furher more.
-
+    2. Expand the gesture set with custom training.
 
 
 
