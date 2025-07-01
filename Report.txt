@@ -9,9 +9,9 @@ Logic behind:
     2. A bounding box is drawn to localize the whole palm and provide a refrence to find the centre of the palm.
     3. the movent of the centre is captured in an empty list and after a certain inteval the descision is made whether its,
     ["volume up", "volume down, "turning right", "turning left"]
-    4. another condition which is ["toggling"] a mute button which is done through pose estimation using mediapipes gesture detection.
-    after each condition fullfilled the que is reset and ready for next classification.
-    5. some commands like volume_up, volume_down, and mute toggling is achieved in real time using the pycaw to control windows speaker control features
+    4. another condition which is ["toggling"] a mute button b/w true or false which is done through pose estimation using mediapipes gesture detection.
+    5. after each condition fullfilled the que is reset and ready for next classification.
+    6. some commands like volume_up, volume_down, and mute toggling is achieved in real time using the pycaw to control windows speaker control features
 
 problems faced:
     1. chances of occulision due to delay b/w the camera and fast movement or latency isues
