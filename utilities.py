@@ -6,7 +6,7 @@ import mediapipe as mp
 from mediapipe.tasks import python
 from mediapipe.tasks.python import vision
 
-model_path = 'D:\Git_projects\Gesture Recognition\gesture_recognizer.task'
+model_path = 'gesture_recognizer.task'
 recognizer = vision.GestureRecognizer.create_from_model_path(model_path)
 
 
@@ -56,9 +56,8 @@ def get_pose(frame, recognizer):
     return None
 
 def loging(area,depth):
-    csv_path = r"D:\Git_projects\Gesture Recognition\log(fist).csv"
-
-    file_exists = os.path.isfile(csv_path)
+    csv_path = "logs"
+    file_exists = os.path.isfile(os.path.join(csv_path, "logs(1).csv"))
     with open(csv_path, mode='a', newline='') as file:
         writer = csv.writer(file)
         if not file_exists:
